@@ -87,6 +87,7 @@ class Student
          end   
    end 
    
+<<<<<<< HEAD
   def self.first_X_students_in_grade_10(num)
         sql = "SELECT * FROM students
               WHERE grade = 10
@@ -109,6 +110,27 @@ class Student
             WHERE grade = ?"
             DB[:conn].execute(sql, grade)
   end 
+=======
+  # def self.first_X_students_in_grade_10(x)
+  #       sql = "SELECT * FROM students
+  #             WHERE grade = 10
+  #             LIMIT (?)"
+  #       DB[:conn].execute(sql, X).map do |row|
+  #         self.new_from_db(row) 
+  #       end 
+  # end 
+  def self.first_X_students_in_grade_10(x)
+   sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE grade = 10
+      LIMIT ?
+    SQL
+
+    DB[:conn].execute(sql, x)
+    
+  end
+>>>>>>> f2dc2c6074d7457fc21a9e09b061119c6bff818e
 end
 
 
